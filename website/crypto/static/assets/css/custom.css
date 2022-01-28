@@ -1,0 +1,227 @@
+#profile{
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+#form{
+    margin: auto;
+}
+#success{
+    width: 70%;
+    margin: auto;  
+}
+.imagelink{
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.image{
+    margin-top: 200px;
+    margin-left: 40%;
+    margin-right: auto;
+}
+.messages{
+	color: green;
+	background-color: rgb(157, 250, 157);
+	text-align: center;
+	border: 1px solid green;
+	padding: 10px 10px;
+    margin-bottom: 20px;
+}
+#column{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 15px;
+}
+
+
+#upcard{
+    background-color: black;
+    width: 320px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    
+}
+#upcard img{
+    height: 150px;
+    width: 120px;
+}
+#upcard h3{
+    color: white;
+    padding-bottom: 20px;
+}
+#upcard h2{
+    float: right;
+    padding-top: 85px;
+}
+.cardheader{
+    background-color: white;
+    width: 320px;
+    padding: 10px;
+    box-sizing: border-box;   
+}
+
+
+.cardheader p{
+    color: black;
+}
+.cardbutton{
+    background-color: rgb(3, 109, 3);
+    margin-top: 20px;
+    margin-left: 120px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+.cardbutton:hover{
+    color: white;
+}
+
+.plan{
+    background-color: rgb(255, 255, 255);
+    height: 550px;
+    width: 350px;
+    margin: auto;
+    border-radius: 10px;
+    border: 2px solid rgba(19, 19, 19, 0.5);
+    color: black;
+    padding-left: 15px;
+}
+.plan img{
+    margin-top: 10px;
+    margin-left: 23%;
+    margin-right: auto;
+    height: 150px;
+}
+.background{
+    width: 100%;
+    height: 100%;
+}
+
+.background img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+}
+.value{
+    padding-left: 15px;
+}
+.buttonlink{
+    background-color: #173fb9;
+    margin-left: 125px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+.buttonlink:hover{
+    color: yellow;
+    text-decoration: none;
+}
+#heading{
+    text-decoration: underline;
+}
+h3 ,.rule{
+    color: red;
+    display: none;
+}
+.buttonsubmit{
+    background-color: #173fb9;
+    margin-left: 65px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    display: none;
+}
+.withdrawgreen{
+    color: green;
+}
+.withdrawred{
+    color: red;
+}
+#value{
+    width: 90%;
+    margin-top: 55%;
+}
+/* chatting system */
+.header{
+    background-color: rgb(110, 110, 255);
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+.messagebody{
+    height: 100%;
+    overflow-y: auto;
+    min-height: 70vh;
+    padding-bottom: 10px;
+
+}
+.field{
+    height: 50px;
+    width: 80%; 
+}
+#button{
+    background-color: rgb(55, 238, 55);
+    border: 2px solid rgb(61, 61, 61);
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px 8px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#checkform, #username,#room_id{
+    width: 80%;
+    text-align: center;
+}
+#checkform{
+    margin: auto;   
+}
+#left{
+    background-color: rgb(79, 165, 245);
+    width: fit-content;
+    color: white;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    
+    
+}
+#right{
+    background-color: rgb(194, 193, 193);
+    width: fit-content;
+    color:black;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    
+}
+#time{
+    padding-left: 10px;
+
+}
+.banner{
+    background-image: url('/static/assets/img/banner-bg.png');
+}
+.deposit{
+    background-image: url('/static/assets/img/deposit-bg.png');
+}
+.counter{
+    background-image: url('/static/assets/img/counter-bg.png');
+}
+.footer{
+    background-image: url('/static/assets/img/footer-bg.png');
+}
+
+

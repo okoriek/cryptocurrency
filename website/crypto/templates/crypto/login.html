@@ -1,0 +1,119 @@
+{% load static %}
+{% block body %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Gooland - Bitcoin Investment HTML Template</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{%block title%}{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+	<!--=== Reset Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
+	<!--=== Bootstrap ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<!--=== Fontawesome icon ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/font-awesome-5.10.2.min.css' %}">
+	<!--=== Owl-Carousel ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/owl.carousel.min.css' %}">
+	<!--=== Magnific Popup===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/magnific-popup.css' %}">
+	<!--=== Nice select Popup===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/nice-select.css' %}">
+	<!--=== Animation Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/animate.css' %}">
+	<!--=== Main Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<!--=== Responsive Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+</head>
+<body>
+
+    <!-- ==========Preloader========== -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Preloader========== -->
+
+
+    <div class="account-section" style="background-image: url('/static/assets/img/account-bg.jpg');">
+        <div class="container">
+            <div class="account-title">
+                <a href="{% url 'home' %}" class="back-home"><i class="fas fa-angle-left"></i><span>Back <span>To
+                            Gooland</span></span></a>
+                <a href="#0" class="logo">
+                    <img src="{% static 'assets/img/footer-logo.png' %}" alt="logo">
+                </a>
+            </div>
+            <div class="account-wrapper">
+                <div class="account-body">
+                    <h3 class="subtitle">Welcome To Gooland</h3>
+                    <form class="account-form" method="POST">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        <p class="login">Please enter a correct username and password</p>
+                        {% endif %}
+                        {% for message in  messages %}
+                        <div class="messages">{{ message }}</div>
+                        {% endfor %}
+                        <br>
+                        <div class="form-group">
+                            {{form.username.label_tag}}
+                            {{form.username}}      
+                        </div>
+                        <div class="form-group">
+                            {{form.password.label_tag}}
+                            {{form.password}}
+                            <span class="sign-in-recovery">Forgot your password? <a href="#0">recover
+                                    password</a></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="sign-in button-1" type="submit">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="or">
+                    <span>OR</span>
+                </div>
+                <div class="account-header">
+                    <span class="d-block span-1">Sign up with your work email</span>
+                    <a href="#0" class="sign-in-with  button-1"><img src="{% static 'assets/img/google.png' %}" alt="icon"><span>Sign
+                            Up with Google</span></a>
+                    <span class="d-block span-2">Don't have an account? <a href="registration.html">Sign Up
+                            Here</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--====== Scroll To Top Start ======-->
+    <div id="scrollUp" title="Scroll To Top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <!--====== Scroll To Top End ======-->
+
+    <!--==================================================================-->
+	<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+	<script src="{% static 'assets/js/proper-min.js'%}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	<!--=== All Plugin ===-->
+	<script src="{% static 'assets/js/plugin/waypoint.min.js' %}"></script>
+	<script src=" {% static 'assets/js/plugin/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/jquery.rcounter.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/wow.min.js' %}"></script>
+
+	<!--=== All Active ===-->
+	<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+{% endblock %}

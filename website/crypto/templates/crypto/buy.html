@@ -1,0 +1,67 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+
+<script>
+    $("document").ready(function(){
+        $(".buttonlink").on("click", function(){
+            $(".buttonlink").hide();
+            $(".rule").show();
+            $(".buttonsubmit").show();
+            $(".buttonsubmit").css("display", "center");
+        })
+        $("#id_subcription").change(function(){
+            var url = $("#paymentprocess").attr("data-prices-url");
+            var subcriptionid = $(this).val();
+
+            $.ajax({
+                url:url,
+                data: {
+                    'subcription_id':subcriptionid
+                },
+                success: function(data){
+                    $("#id_price").html(data);
+                }
+            });
+        })
+
+    });
+        
+</script>
+<div class="plan">
+    <br>
+    <br>
+    <h4 id="heading">Personal information</h4>
+    <br>
+    <h6><strong>Username</strong> {{user.username}}</h6>
+    <h6><strong>Email:</strong> {{user.email}}</h6>
+    <h6><strong>Mobile number:</strong> {{user.usermembership.phone}}</h6>
+    <h6><strong>User id:</strong> {{user.usermembership.customer_id}}</h6>
+    <br>
+    <h4 id="heading">Subcription information</h4>
+    <br>
+    <form action="" method="POST" id="paymentprocess" data-prices-url="{% url 'processing' %}" novalidate>
+        <strong>{{form.subcription.label}}:</strong>
+        {{form.subcription}}
+        <br>
+        <br>
+        <strong>{{form.price.label}}:</strong>
+        {{form.price}}
+        <br>
+        <br>
+        <h6 class="rule">
+            <center>
+                Please transfer the exact amount of coin to the wallet
+                below for quick verification
+                <br>
+                <strong>{{wallet}}</strong>
+            </center>
+        </h6>
+        <button type="submit" class="buttonsubmit"> i have made payment</button>
+    </form>
+    <br>
+    <button type="button" class="buttonlink"> next</button>
+</div>
+{% endblock %}

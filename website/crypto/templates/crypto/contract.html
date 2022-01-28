@@ -1,0 +1,41 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+{% if user.membership.active %}
+<div class="plan">
+
+    <img src="{% static 'img/active.png' %}" alt="">
+    <center>
+        <br>
+        <br>
+        <h5><strong>Membership Plan: </strong>{{user.membership.subcription}}</h5>
+        <hr>
+        <h5><strong>Price: </strong>{{user.membership.price}} Trx</h5>
+        <hr>
+        <h5><strong>Active: </strong>{{user.membership.created}}</h5>
+        <hr>
+        <h5><strong>Inactive: </strong>{{user.membership.deactivated}}</h5>
+    </center>
+
+</div>
+{% else %}
+<div class="plan">
+
+    <img src="{% static 'img/inactive.png' %}" alt="">
+    <br>
+    <br>
+    <h5><strong>Membership Plan: </strong><span class="value"> none </span></h5>
+    <hr>
+    <h5><strong>Price: </strong><span class="value"> none </span></h5>
+    <hr>
+    <h5><strong>Active: </strong><span class="value"> none </span></h5>
+    <hr>
+    <h5><strong>Inactive: </strong><span class="value"> none </span></h5>
+    <br>
+    <br>
+    <a href="{% url 'activate' %}" class="buttonlink"> Activate </a>
+</div>
+
+{% endif %}
+{% endblock %}

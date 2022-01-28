@@ -1,0 +1,137 @@
+{% load static %}
+{% block body %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Gooland - Bitcoin Investment HTML Template</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{%block title%}{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+	<!--=== Reset Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
+	<!--=== Bootstrap ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<!--=== Fontawesome icon ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/font-awesome-5.10.2.min.css' %}">
+	<!--=== Owl-Carousel ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/owl.carousel.min.css' %}">
+	<!--=== Magnific Popup===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/magnific-popup.css' %}">
+	<!--=== Nice select Popup===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/nice-select.css' %}">
+	<!--=== Animation Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugin/animate.css' %}">
+	<!--=== Main Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<!--=== Responsive Css ===-->
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+</head>
+
+<body>
+	<!-- ==========Preloader========== -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- ==========Preloader========== -->
+	<div class="account-section" style="background-image: url('/static/assets/img/account-bg.jpg');">
+		<div class="container">
+			<div class="account-title">
+				<a href="{% url 'home' %}" class="back-home"><i class="fas fa-angle-left"></i><span>Back <span>To
+							Gooland</span></span></a>
+				<a href="#0" class="logo">
+					<img src="{% static 'assets/img/footer-logo.png' %}" alt="logo">
+				</a>
+			</div>
+			<div class="account-wrapper">
+				<div class="account-header">
+					<h3 class="subtitle">Let's get started</h3>
+					<a href="#0" class="sign-in-with button-1"><img src="{% static 'assets/img/google.png' %}" alt="icon"><span>Sign
+							Up with Google</span></a>
+				</div>
+				<div class="or">
+					<span>OR</span>
+				</div>
+				<div class="account-body">
+					<span class="d-block">Sign up with your work email</span>
+					<form class="account-form" method="POST">
+						{% csrf_token %}
+						<div class="form-group">
+							{{form.username.label_tag}}
+							{{form.username}}
+						</div>
+						<div class="form-group">
+							{{form.email.label_tag}}
+							{{form.email}}
+						</div>
+						<div class="form-group">
+							{{form.password1.label_tag}}
+							{{form.password1}}
+						</div>
+						<div class="form-group">
+							{{form.password2.label_tag}}
+							{{form.password2}}
+						</div>
+						<div class="form-group">
+							<label for="referral"> referral code:</label>
+							<input type="text" name="refercode" id="referral">
+						</div>
+						
+						<input type="checkbox" id="checkbox" name="checkbox">
+						<label for="checkbox">i have read and agree to the terms & condition.</label>
+						
+						<div class="form-group text-center">
+							<button class="button-1" id="submitbutton" type="submit" >Try It Now</button>
+							<span class="d-block">Already have an account? <a href="login.html">Sign
+									In</a></span>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="invest">
+				<h4 class="slider-heading lasthead ">Invest by over 1,000,000 people worldwide</h4>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+			var button = $('#submitbutton')
+			$("#checkbox").change(function (e) {
+				if (this.checked) {
+					button.removeAttr("disabled")
+				} else {
+					button.attr("disabled", true)
+				}
+			})
+		});
+	</script>
+	<!--====== Scroll To Top Start ======-->
+	<div id="scrollUp" title="Scroll To Top">
+		<i class="fas fa-arrow-up"></i>
+	</div>
+	<!--====== Scroll To Top End ======-->
+
+	<!--==================================================================-->
+	<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+	<script src="{% static 'assets/js/proper-min.js'%}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	<!--=== All Plugin ===-->
+	<script src="{% static 'assets/js/plugin/waypoint.min.js' %}"></script>
+	<script src=" {% static 'assets/js/plugin/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/jquery.rcounter.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugin/wow.min.js' %}"></script>
+
+	<!--=== All Active ===-->
+	<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+{% endblock %}
