@@ -63,6 +63,14 @@
 				<div class="account-body">
 					<span class="d-block">Sign up with your work email</span>
 					<form class="account-form" method="POST">
+						{% if form.errors %}
+							<div class="login">
+								{{form.errors}}
+							</div>
+						{% else %}
+							{{empty}}
+						{% endif %}
+						<br>
 						{% csrf_token %}
 						<div class="form-group">
 							{{form.username.label_tag}}

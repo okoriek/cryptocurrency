@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from .import views
 from django.contrib.auth.views import (
@@ -27,7 +28,6 @@ urlpatterns = [
     path('register/', views.Register, name='register'),
     path('register/<str:ref_code>/', views.Register, name='register'),
     path('Profile-dashboard/', views.Dashboard, name='dashboard'),
-    path('verification/', views.email, name='email'),
     path('activate/', views.Activate, name='activate'),
     path('Profile-details/', views.profiledetails, name='profiledetails'),
     path('history/', views.HistoryViews, name='history'),
@@ -35,5 +35,6 @@ urlpatterns = [
     path('<str:room>/', views.room, name='room'),
     path('live_chat', views.confirmation, name='check'),
     path('send', views.send, name='send'),
-    path('receive/<str:room>/', views.receive, name='receive')
+    path('receive/<str:room>/', views.receive, name='receive'),
+    path('verification/<uidb64>/<token>/', views.EmailVerification, name='verification'),
 ] 

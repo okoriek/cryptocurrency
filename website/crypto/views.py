@@ -1,3 +1,5 @@
+import email
+import profile
 from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import crypto
@@ -10,24 +12,42 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
 from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.encoding import force_bytes, force_str
+from django.contrib.sites.shortcuts import get_current_site
+from .utils import TokenGenerator
+from django.conf import settings
+
+
+
 
 def home(request):
     return render(request, 'crypto/home.html')
 
-def email(request):
-    return render(request, 'crypto/email_verification.html')
+def EmailVerification(request, uidb64, token):
+    try:
+        uid =  force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError,ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and TokenGenerator.check_token(user, token):
+        user.usermembership.is_verified =  True
+        user.save()
+        return redirect('/login')
 
 def Register(request):
-    try:
-        code = request.POST.get('refercode')
-        referred = UserMembership.objects.get(referal_code=code)
-    except:
-        pass
     if request.method=='POST':
         form = RegisterationForm(request.POST)
         forms = CustomForm(request.POST)
+        try:
+            code = request.POST.get('refercode')
+            referred = UserMembership.objects.get(referal_code=code)
+        except:
+            pass
         if form.is_valid() and forms.is_valid():
-            user=form.save()
+            user = form.save()
             profile = forms.save(commit=False)
             profile.user=user
             try:
@@ -35,12 +55,21 @@ def Register(request):
             except:
                 pass
             profile.save()
-            return redirect('/email_verification')
-            
+            website = get_current_site(request).domain
+            email_subject = 'Email Verification'
+            email_body =  render_to_string('crypto/activation.html',{
+                'user':user,
+                'domain':website,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': TokenGenerator.make_token(user)
+            })
+            email = EmailMessage(subject=email_subject, body=email_body,
+                from_email=settings.EMAIL_HOST_USER, to=[user.email]
+                )
+            email.send()
     else:
         form = RegisterationForm()
-        forms = CustomForm()
-    args = {'form':form, 'forms':forms}
+    args = {'form':form}
     return render(request, 'crypto/register.html', args)
 
 @login_required(login_url='/login/')  
@@ -58,7 +87,6 @@ def passwordreset(request):
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-
             messages.success(request, 'Password has been succesfully updated!')
             return redirect('/login')
             

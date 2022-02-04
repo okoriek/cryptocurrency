@@ -56,6 +56,7 @@ class Membership(models.Model):
 class UserMembership(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True, null=True)
     recommended_by =models.CharField(max_length=200, blank=True)
+    is_verified = models.BooleanField(default=False)
     membership = models.ForeignKey(Membership, on_delete=models.SET_NULL, null=True,blank=True)
     wallet = models.CharField(verbose_name='wallet address',max_length=50, blank=True)
     referal_code = models.CharField(default=get_random_string(length=6), unique=True, max_length=6, blank=True)
