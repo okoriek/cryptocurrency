@@ -1,6 +1,6 @@
 import email
 import profile
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import crypto
 from .form import CustomForm,RegisterationForm, SubcriptionForm
@@ -34,7 +34,7 @@ def EmailVerification(request, uidb64, token):
         user = None
     if user is not None and TokenGenerator.check_token(user, token):
         user.usermembership.is_verified =  True
-        user.save()
+        user.usermembership.save()
         return redirect('/login')
 
 def Register(request):
@@ -67,6 +67,8 @@ def Register(request):
                 from_email=settings.EMAIL_HOST_USER, to=[user.email]
                 )
             email.send()
+            return redirect('/login')
+            messages.success(request, 'A Verification Email has been sent to your Email please confirm')
     else:
         form = RegisterationForm()
     args = {'form':form}
@@ -87,7 +89,7 @@ def passwordreset(request):
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Password has been succesfully updated!')
+            messages.add(request, 'Password has been succesfully updated!')
             return redirect('/login')
             
     else:

@@ -146,8 +146,8 @@ LOGIN_REDIRECT_URL = ('/home')
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tronicdesk1@gmail.com'
+EMAIL_HOST_USER = 'postmaster@sandboxbc84cdc968f34c2fbe94ace279c46ad8.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = '46347223' 
+EMAIL_HOST_PASSWORD = 'ecded718b1210aecf7bbe4460753f60d-c250c684-401a26bc' 

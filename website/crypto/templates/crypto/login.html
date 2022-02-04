@@ -58,6 +58,9 @@
                     <h3 class="subtitle">Welcome To Gooland</h3>
                     <form class="account-form" method="POST">
                         {% csrf_token %}
+                        {% if messages %}
+                            {{messages}}
+                        {% endif %}
                         {% if form.errors %}
                         <p class="login">Please enter a correct username and password</p>
                         {% endif %}
@@ -87,7 +90,7 @@
                     <span class="d-block span-1">Sign up with your work email</span>
                     <a href="#0" class="sign-in-with  button-1"><img src="{% static 'assets/img/google.png' %}" alt="icon"><span>Sign
                             Up with Google</span></a>
-                    <span class="d-block span-2">Don't have an account? <a href="registration.html">Sign Up
+                    <span class="d-block span-2">Don't have an account? <a href="{% url 'register' %}">Sign Up
                             Here</a></span>
                 </div>
             </div>
