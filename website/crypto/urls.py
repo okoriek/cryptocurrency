@@ -24,7 +24,7 @@ urlpatterns = [
 
     path('password_change/', views.passwordreset ,name='passwordreset'),
     path('contract/', views.Contract, name='contract'),
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('register/', views.Register, name='register'),
     path('register/<str:ref_code>/', views.Register, name='register'),
     path('Profile-dashboard/', views.Dashboard, name='dashboard'),
