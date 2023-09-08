@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv('CRYPTO_DB'))
+    'default': dj_database_url.parse(os.getenv('cryptocurrency'))
 }
 
 
@@ -141,8 +141,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'Stormxbet <admin@crimsoniclearningcentre.com.ng>'
 
-#AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID')
-#AWS_SECRET_ACCESS_KEY=os.environ.get('AWS_SECRET_ACCESS_KEY')
-#AWS_STORAGE_BUCKET_NAME = 'stormxbet'
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'kwexinvest'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
