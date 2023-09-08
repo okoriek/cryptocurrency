@@ -5,7 +5,9 @@ dj-database-url==2.1.0
 Django==4.2.4
 django-countries==7.5.1
 django-storages==1.13.2
+gunicorn==21.2.0
 jmespath==1.0.1
+packaging==23.1
 Pillow==10.0.0
 psycopg2-binary==2.9.7
 python-dateutil==2.8.2
